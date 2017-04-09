@@ -7,4 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+# RubyMine
 /.idea/
+# RuboCop config cache file
+.rubocop-https---raw-githubusercontent-com-voxable-labs-ruby-style-guide-master--rubocop-yml
