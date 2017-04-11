@@ -5,12 +5,7 @@ module Hg
     class FulfillmentController < ApplicationController
       # Handle API.ai fulfillment requests.
       def fulfill
-        speech_response = bot.router.handle(bot_request)
-
-        fulfillment_response = {
-          speech:       speech_response,
-          display_text: speech_response
-        }
+        fulfillment_response = bot.router.handle(bot_request)
 
         logger.info fulfillment_response.inspect if Rails.env.development?
 

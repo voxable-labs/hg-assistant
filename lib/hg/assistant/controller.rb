@@ -4,8 +4,18 @@ module Hg
     class Controller < ::Hg::Controller
       attr_accessor :response
 
-      def respond(speech_response)
-        return speech_response
+      # @see https://developers.google.com/actions/reference/webhook-format
+      # TODO: allow specifying reprompts
+      def respond(speech_response, display_text: nil)
+        {
+          speech:               speech_response,
+          display_text:         (speech_response || display_text),
+          data: {
+            google: {
+              expect_user_response: false
+            }
+          }
+        }
       end
 
       # TODO: High - after filters can't effect response
