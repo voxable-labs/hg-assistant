@@ -10,9 +10,7 @@ module Hg
       def user
         user_id = fetch_param(:originalRequest, :data, :user, :user_id)
 
-        @user ||= Hg::Assistant::Bot.bot_class
-                    .user_class
-                    .find_or_create_by(google_user_id: user_id)
+        @user ||= bot.user_class.find_or_create_by(google_user_id: user_id)
       end
 
       # Generate an `Hg::Request` from the API.ai fulfillment request.
@@ -29,6 +27,11 @@ module Hg
           parameters: fetch_param(:result, :parameters),
           response:   fetch_param(:result, :fulfillment, :speech)
         )
+      end
+
+      # @return [Class] The assistant bot.
+      def bot
+        Hg::Assistant::Bot.config.bot_class
       end
 
       # https://gist.github.com/jalkoby/6869556
