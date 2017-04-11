@@ -11,7 +11,7 @@ gemspec
 # your gem to rubygems.org.
 
 # Uncomment the below when in development
-# gem 'hg', path: '../hg'
+gem 'hg', path: '../hg'
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]

@@ -1,4 +1,7 @@
-require "hg/assistant/engine"
+require 'dry-configurable'
+
+require 'hg/assistant/engine'
+require 'hg/assistant/bot'
 
 module Hg
   module Assistant

@@ -25,6 +25,12 @@ $ gem install hg-assistant
 ## Usage
 How to use my plugin.
 
+### User record
+
+Required fields:
+
+* `google_user_id`: string
+
 ## Documentation
 The source code is documented in the literate style. You can view the docs [here](http://www.rubydoc.info/github/voxable-labs/hg-assistant/master).
 
