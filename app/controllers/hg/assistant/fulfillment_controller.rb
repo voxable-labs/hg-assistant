@@ -5,17 +5,7 @@ module Hg
     class FulfillmentController < ApplicationController
       # Handle API.ai fulfillment requests.
       def fulfill
-        action     = fetch_param(:result, :metadata, :intentName) ||
-                     fetch_param(:result, :action)
-        parameters = fetch_param(:result, :parameters)
-        message    = fetch_param(:result, :resolvedQuery)
-        response   = fetch_param(:result, :fulfillment, :speech)
-
-        puts action
-        puts parameters
-        puts message
-        puts response
-        puts user
+        puts bot_request.inspect
       end
     end
   end
