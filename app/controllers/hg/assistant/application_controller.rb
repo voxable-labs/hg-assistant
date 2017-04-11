@@ -24,7 +24,7 @@ module Hg
           message:    fetch_param(:result, :resolvedQuery),
           intent:     intent,
           action:     intent || fetch_param(:result, :action),
-          parameters: fetch_param(:result, :parameters),
+          parameters: params.permit![:result][:parameters].to_h,
           response:   fetch_param(:result, :fulfillment, :speech)
         )
       end
