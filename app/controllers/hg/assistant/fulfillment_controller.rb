@@ -3,24 +3,19 @@
 module Hg
   module Assistant
     class FulfillmentController < ApplicationController
-      before_action :find_bot_user
-
       # Handle API.ai fulfillment requests.
       def fulfill
-        puts @user.inspect
-      end
+        action     = fetch_param(:result, :metadata, :intentName) ||
+                     fetch_param(:result, :action)
+        parameters = fetch_param(:result, :parameters)
+        message    = fetch_param(:result, :resolvedQuery)
+        response   = fetch_param(:result, :fulfillment, :speech)
 
-      private
-
-      # Find the appropriate user for this request.
-      #
-      # @return [Object] The user that initiated the request.
-      def find_bot_user
-        user_id = params['originalRequest']['data']['user']['user_id']
-
-        @user = Hg::Assistant::Bot.bot_class
-                                  .user_class
-                                  .find_or_create_by(google_user_id: user_id)
+        puts action
+        puts parameters
+        puts message
+        puts response
+        puts user
       end
     end
   end
