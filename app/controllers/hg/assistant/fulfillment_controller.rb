@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Ensure that the bot's config is loaded.
+require_dependency Rails.root.join('config', 'initializers', 'assistant_bot.rb')
+
 module Hg
   module Assistant
     class FulfillmentController < ApplicationController
