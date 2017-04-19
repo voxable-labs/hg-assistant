@@ -31,6 +31,17 @@ module Hg
         }
       end
 
+      # Generate a context based on merging the params into the user's current context.
+      #
+      # @return [ActiveSupport::HashWithIndifferentAccess] The merged context.
+      def merged_context
+        context_field = Hg::Assistant::Bot.config.user_context_field
+
+        ActiveSupport::HashWithIndifferentAccess
+          .new((user.public_send(context_field) || {})
+                 .merge(params))
+      end
+
       # TODO: High - after filters can't effect response
     end
   end
